@@ -1,0 +1,19 @@
+{
+  "name": "com.hoge.example",
+  "version": "1.0.0",
+  "displayName": "hoge",
+  "cordova": {
+    "platforms": [
+      "ios",
+      "browser"
+    ],
+    "plugins": {
+      "cordova-sqlite-storage": {}
+    }
+  },
+  "dependencies": {
+    "cordova-browser": "5.0.1",
+    "cordova-ios": "4.5.3",
+    "cordova-sqlite-storage": "^2.1.2"
+  }
+}
