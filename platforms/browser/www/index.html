@@ -1,90 +1,56 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-        <title>週報画面</title>
-    </head>
-    <body>
-        <div>
-            <a href="#">設定</a>
-            <hr>
-            <a href="#">日</a>&nbsp;
-            <a href="#">月</a>&nbsp;
-            <a href="#">火</a>&nbsp;
-            <a href="#">水</a>&nbsp;
-            <a href="#">木</a>&nbsp;
-            <a href="#">金</a>&nbsp;
-            <a href="#">土</a>&nbsp;
-            <hr>
-            <input type="hidden" id="id">
-            <input type="hidden" id="send_check">
-            <ul>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>週報画面</title>
+    <link rel="stylesheet" media="all" href="css/style.css" />
+    <script src="scripts/respond.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+</head>
+
+<body>
+    <div class="container row">
+        <div id="header-fixed">
+            <div id="header-bk">
+                <div id="header">2017年11月30日</div>
+            </div>
+        </div>
+        <ul class="nav">
+            <li class="nav__item">
+                <p>日</p><img src="img/1.gif"></li>
+            <li class="nav__item">
+                <p>日</p><img src="img/1.gif"></li>
+            <li class="nav__item">
+                <p>日</p><img src="img/1.gif"></li>
+            <li class="nav__item">
+                <p>日</p><img src="img/1.gif"></li>
+            <li class="nav__item">
+                <p>日</p><img src="img/1.gif"></li>
+            <li class="nav__item">
+                <p>日</p><img src="img/1.gif"></li>
+            <li class="nav__item">
+                <p>日</p><img src="img/1.gif"></li>
+        </ul>
+        <div class="main">
+            <ul class="fields">
                 <li>タイトル&nbsp;:<input type="text" id="title"></li>
-                <li>案件名&nbsp;&nbsp;:<input type="text" id="project_name"></li>
-                <li>担当タスク:<input type="text" id="assign_task"></li>
-                <li>作業量&nbsp;&nbsp;:<input type="text" id="work_volume"></li>
-                <li>その他連絡:<textarea id="notice_etc"></textarea></li>
-                <li>日:&nbsp;開始:&nbsp;<input type="text" id="start_date_sun">&nbsp;終了:&nbsp;<input type="text" id="end_date_sun">&nbsp;備考:&nbsp;<input type="text" id="notice_sun"></li>
-                <li>月:&nbsp;開始:&nbsp;<input type="text" id="start_date_mon">&nbsp;終了:&nbsp;<input type="text" id="end_date_mon">&nbsp;備考:&nbsp;<input type="text" id="notice_mon"></li>
-                <li>火:&nbsp;開始:&nbsp;<input type="text" id="start_date_tue">&nbsp;終了:&nbsp;<input type="text" id="end_date_tue">&nbsp;備考:&nbsp;<input type="text" id="notice_tue"></li>
-                <li>水:&nbsp;開始:&nbsp;<input type="text" id="start_date_wed">&nbsp;終了:&nbsp;<input type="text" id="end_date_wed">&nbsp;備考:&nbsp;<input type="text" id="notice_wed"></li>
-                <li>木:&nbsp;開始:&nbsp;<input type="text" id="start_date_thu">&nbsp;終了:&nbsp;<input type="text" id="end_date_thu">&nbsp;備考:&nbsp;<input type="text" id="notice_thu"></li>
-                <li>金:&nbsp;開始:&nbsp;<input type="text" id="start_date_fri">&nbsp;終了:&nbsp;<input type="text" id="end_date_fri">&nbsp;備考:&nbsp;<input type="text" id="notice_fri"></li>
-                <li>土:&nbsp;開始:&nbsp;<input type="text" id="start_date_sat">&nbsp;終了:&nbsp;<input type="text" id="end_date_sat">&nbsp;備考:&nbsp;<input type="text" id="notice_sat"></li>
+                <li>案件名&nbsp;:<input type="text" id="project_name"></li>
+                <li>担当タスク&nbsp;:<input type="text" id="assign_task"></li>
+                <li>作業量&nbsp;:<input type="text" id="work_volume"></li>
+                <li>その他連絡&nbsp;:<textarea id="notice_etc" rows="6" cols="36"></textarea></li>
+                <li>開始&nbsp;:<input type="text" id="start_date_sun"></li>
+                <li>終了&nbsp;:<input type="text" id="end_date_sun"></li>
+                <li>備考&nbsp;:<input type="text" id="notice_sun"></li>
             </ul>
-            <input type="button" id="save" value="保存">
-            <input type="button" id="send" value="送信">
-        </div>
-        <hr>
-        <div>
-            <input type="hidden" id="config_id">
-            <ul>
-                <li>to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="text" id="to"></li>
-                <li>from&nbsp;&nbsp;:<input type="text" id="from"></li>
-                <li>差出名&nbsp;:<input type="text" id="user_name"></li>
-                <li>出先名&nbsp;:<input type="text" id="company_name"></li>
-            </ul>
-            <input type="button" id="save_config" value="保存">
-        </div>
-        <hr>
-        <div>
-            <ul>
-                <li>
-                    <input type="button" id="sqllite_open" value="sqllite接続">
-                    <input type="button" id="websql_open" value="websql接続">
-                </li>
-                <li>
-                    <input type="button" id="create_weekreport_table" value="週報テーブル作成">
-                    <input type="button" id="create_config_table" value="設定マスタテーブル作成">
-                </li>
-                <li>
-                    <input type="button" id="insert_weekreport_record" value="週報レコード新規作成">
-                    <input type="button" id="update_weekreport_record" value="週報レコード更新">
-                </li>
-                <li>
-                    <input type="button" id="all_reed_weekreport_records" value="週報レコード全件取得">
-                    <input type="button" id="last_reed_weekrepot_record" value="週報レコード直近１件取得">
-                </li>
-                <li><input type="button" id="reed_config" value="設定マスタレコード取得"></li>
-                <hr>
-                <li>
-                    <input type="button" id="drop_weekreport_table" value="週報テーブル削除">
-                    <input type="button" id="drop_config_table" value="設定マスタテーブル削除">
-                </li>
-                <li><input type="button" id="delete_weekreport_record" value="週報レコード削除"></li>
-            </ul>
-        </div>
-        <hr>
-        <div id="debug_log">
-            LOG:
-            <ul id="results"></ul>
+            <button class="topcoat-button--cta">Button</button
+            </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-            // 初期設定実行
-            app.init();
+            app.initialize();
         </script>
     </body>
 </html>
